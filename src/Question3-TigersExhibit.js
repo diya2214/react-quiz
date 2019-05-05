@@ -16,16 +16,21 @@
  * provide a key prop which tells React which list item is which
  */
 
-import React from "react";
+import React from 'react'
+import { tsPropertySignature } from '@babel/types'
 
-function TigersExhibit() {
+function TigersExhibit (props) {
   return (
-    <div className="tigers">
+    <div className='tigers'>
       <h2>Tigers</h2>
-      <p>There are ... tigers in the world</p>
-      <ul>{/* DELETE THIS LINE AND WRITE THE ANSWER PART B HERE */}</ul>
+      <p>There are {props.population} tigers in the world</p>
+      <ul>
+        {props.habitats.map((habitat, index) => {
+          return <li key={index}>{habitat}</li>
+        })}
+      </ul>
     </div>
-  );
+  )
 }
 
-export default TigersExhibit;
+export default TigersExhibit
